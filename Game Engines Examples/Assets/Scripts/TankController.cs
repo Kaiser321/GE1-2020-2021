@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     public float speed = 5;
-    public float rotSpeed = 100;
+    public float rotationSpeed = 100;
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class TankController : MonoBehaviour
         transform.Translate(0, 0, c * speed * Time.deltaTime);
 
         float r = Input.GetAxis("Horizontal");
-        transform.Rotate(0, r * rotSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, r * rotationSpeed * Time.deltaTime, 0);
     }
 }

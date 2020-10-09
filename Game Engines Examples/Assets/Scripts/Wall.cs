@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public int width = 20;
-    public int height = 20;
+    public int width = 5;
+    public int height = 5;
     // Start is called before the first frame update
     void Start()
     {
