@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Patrol : MonoBehaviour
 {
     public int elements = 12;
     public float radius = 10;
@@ -27,16 +27,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(Vector3.Distance(transform.position, w.transform.position));
         if (Vector3.Distance(transform.position, currentWaypoint.transform.position) < 0.5)
         {
             currentWaypointIndex = (currentWaypointIndex + 1) % wayPoints.Count;
             currentWaypoint = (GameObject)wayPoints[currentWaypointIndex];
         }
         Vector3 targetDirection = currentWaypoint.transform.position - transform.position;
-        transform.LookAt(currentWaypoint.transform);
-        // Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 20 * Time.deltaTime, 0.0f);
-        // transform.rotation = Quaternion.LookRotation(newDirection);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 10 * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.transform.position, 1 * Time.deltaTime);
     }
 }
